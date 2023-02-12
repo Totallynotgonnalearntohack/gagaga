@@ -38,7 +38,7 @@ end)
 local maxPing = 200;
 b:Slider("Maximum Ping",{
     min = 50;
-    max = 500;
+    max = 2000;
     precise = false;
 },function(value)
     maxPing = value
