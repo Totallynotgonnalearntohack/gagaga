@@ -82,3 +82,12 @@ while wait(0.6) do
         bomb(tableValue, bombValue)
     end
 end
+
+b:TextBox("Enter Key", function(key)
+    local keybind = key
+    UserInputService.InputBegan:Connect(function(inputObject)
+        if inputObject.KeyCode == Enum.KeyCode[keybind] then
+            shared.toggle = not shared.toggle
+        end
+    end)
+end)
