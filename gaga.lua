@@ -10,14 +10,10 @@ b:Label("Lagger",{
 
 local toggle = false
 
-b:TextBox("Enter Key", function(key)
-    local keybind = key
-    UserInputService.InputBegan:Connect(function(inputObject)
-        if inputObject.KeyCode == Enum.KeyCode[keybind] then
-            shared.toggle = not shared.toggle
-        end
-    end)
+b:Button("Toggle", function()
+    toggle = not toggle
 end)
+
 -- Defaults to 90, adjust as necessary
 local tableValue = 90;
 b:Slider("table value",{
@@ -86,5 +82,3 @@ while wait(0.6) do
         bomb(tableValue, bombValue)
     end
 end
-
-
