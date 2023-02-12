@@ -34,10 +34,21 @@ b:Slider("bomb value",{
     bombValue = value
 end)
 
+-- Defaults to 200, adjust as necessary
+local maxPing = 200;
+b:Slider("Maximum Ping",{
+    min = 50;
+    max = 1000;
+    precise = false;
+},function(value)
+    maxPing = value
+end)
+
 b:DestroyGui()
 
 while wait(0.6) do
     if toggle then
+        game:GetService("NetworkClient"):SetOutgoingKBPSLimit(math.huge)
         local function getmaxvalue(val)
             local mainvalueifonetable = 499999
             if type(val) ~= "number" then
@@ -78,6 +89,14 @@ while wait(0.6) do
             end
         end
         
-        bomb(tableValue, bombValue)
+        local function getPing()
+            return game:GetService("Players").LocalPlayer.Ping
+        end
+        
+        while getPing() < maxPing do
+            bomb(tableValue, bombValue)
+            wait()
+        end
+        toggle = false
     end
 end
