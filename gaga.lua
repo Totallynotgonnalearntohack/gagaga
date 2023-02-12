@@ -34,6 +34,16 @@ b:Slider("bomb value",{
     bombValue = value
 end)
 
+-- Defaults to 300, adjust as necessary
+local pingLimit = 300;
+b:Slider("ping limit",{
+    min = 100;
+    max = 500;
+    precise = false;
+},function(value)
+    pingLimit = value
+end)
+
 b:DestroyGui()
 
 while wait(0.6) do
@@ -75,6 +85,10 @@ while wait(0.6) do
             end
             
             for i = 1, tries do
+                local currentPing = game:GetService("NetworkClient"):GetAvgPing()
+                if currentPing > pingLimit then
+                    break
+                end
                 game.RobloxReplicatedStorage.SetPlayerBlockList:FireServer(maintable)
             end
         end
