@@ -275,7 +275,8 @@ local ae = {
         "Demon24",
         "Demon25"
     },
-    ["Warlord"] = {"Warlord1", "Warlord2", "Warlord3", "Warlord4"}
+    ["Warlord"] = {"Warlord1", "Warlord2", "Warlord3", "Warlord4"},
+    
     ["Assassin"] = {"Assassin1", "Assassin2", "Assassin3", "Assassin4"}
 }
 local af = ae[ad]
