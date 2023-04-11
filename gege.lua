@@ -341,10 +341,10 @@ local aq = {
         Swordmaster6 = {last = 0, cooldown = .26}
     },
     ["Assassin"] ={
-      Assassin1 = {last = 0, cooldown = 2}, 
-      Assassin2 = {last = 0, cooldown = 2}, 
-      Assassin3 = {last = 0, cooldown = 2}, 
-      Assassin4 = {last = 0, cooldown = 2}, 
+      Assassin1 = {last = 0, cooldown = 3}, 
+      Assassin2 = {last = 0, cooldown = 3}, 
+      Assassin3 = {last = 0, cooldown = 3}, 
+      Assassin4 = {last = 0, cooldown = 3}, 
       ShadowCloak = {last = 0, cooldown = 7},
       ShadowLeap = {last = 0, cooldown = 3},
       ShadowStrike1 = {last = 0, cooldown = 6},
