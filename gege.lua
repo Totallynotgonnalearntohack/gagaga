@@ -276,7 +276,6 @@ local ae = {
         "Demon25"
     },
     ["Warlord"] = {"Warlord1", "Warlord2", "Warlord3", "Warlord4"},
-    
     ["Assassin"] = {"Assassin1", "Assassin2", "Assassin3", "Assassin4"}
 }
 local af = ae[ad]
@@ -583,8 +582,7 @@ local ar = {
         WarlordUltimate4 = {last = 0, cooldown = 15},
         WarlordUltimate5 = {last = 0, cooldown = 15}
     }
-
-    }
+}
 local function as(at)
     local au = {"", "K", "M", "B", "T"}
     for A, av in ipairs(au) do
