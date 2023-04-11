@@ -582,12 +582,9 @@ local ar = {
         WarlordUltimate3 = {last = 0, cooldown = 15},
         WarlordUltimate4 = {last = 0, cooldown = 15},
         WarlordUltimate5 = {last = 0, cooldown = 15}
-    },
-    ["Assassin"] ={
-        
-        }
     }
-}
+
+    }
 local function as(at)
     local au = {"", "K", "M", "B", "T"}
     for A, av in ipairs(au) do
