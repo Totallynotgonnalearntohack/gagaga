@@ -327,7 +327,7 @@ ag("WZ_Toggles", al)
 local am = {Webhook = ""}
 ag("WZwebhook", am)
 local an = syn and syn.queue_on_teleport or fluxus and fluxus.queue_on_teleport or queue_on_teleport
-local ao = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/Totallynotgonnalearntohack/gagaga/main/gaga.lua"))()'
+local ao = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/Totallynotgonnalearntohack/gagaga/main/gege.lua"))()'
 local ap = {DungeonID = a0[game.PlaceId], DifficultyID = S.GetDifficulty(), ProfileGUID = k.Profiles[H.Name].GUID.Value}
 ak("WZ_Kick", ap)
 local aq = {
